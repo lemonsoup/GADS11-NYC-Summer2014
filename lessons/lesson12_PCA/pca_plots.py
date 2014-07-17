@@ -1,10 +1,3 @@
-
-
-
-
-
-
-#!/usr/local/bin/python
 """
 =======================================================
 Comparison of LDA and PCA 2D projection of Iris dataset
@@ -28,7 +21,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn import datasets
-from sklearn.decomposition import PCA
+from sklearn.decomposition import KernelPCA
 from sklearn.lda import LDA
 from sklearn.svm import LinearSVC
 
@@ -62,7 +55,7 @@ def pca_plot():
     y = iris.target
     target_names = iris.target_names
     
-    pca = PCA(n_components=2)
+    pca = PCA(n_components=2, kernel = "rbf")
     X_decomp = pca.fit(X).transform(X)
     
     print 'explained variance ratio (first two components):', \
@@ -76,5 +69,5 @@ def pca_plot():
     pl.show()
 
 if __name__ == '__main__':
-    # scree_plot()
+    scree_plot()
     pca_plot()
